@@ -1,0 +1,65 @@
+#include <stdio.h>
+
+int main() {
+
+    int pin, choice;
+    float balance = 5000, amount;
+
+    printf("Enter PIN: ");
+    scanf("%d",&pin);
+
+    if(pin != 1234) {
+        printf("Wrong PIN");
+        return 0;
+    }
+
+    do {
+
+        printf("\n1. Check Balance");
+        printf("\n2. Withdraw");
+        printf("\n3. Deposit");
+        printf("\n4. Exit");
+
+        printf("\nEnter choice: ");
+        scanf("%d",&choice);
+
+        switch(choice) {
+
+            case 1:
+                printf("Balance = %.2f", balance);
+                break;
+
+            case 2:
+                printf("Enter amount: ");
+                scanf("%f",&amount);
+
+                if(amount <= balance) {
+                    balance -= amount;
+                    printf("Withdraw successful");
+                }
+                else
+                    printf("Insufficient balance");
+
+                break;
+
+            case 3:
+                printf("Enter amount: ");
+                scanf("%f",&amount);
+
+                balance += amount;
+                printf("Deposit successful");
+
+                break;
+
+            case 4:
+                printf("Thank you");
+                break;
+
+            default:
+                printf("Invalid choice");
+        }
+
+    } while(choice != 4);
+
+    return 0;
+}
